@@ -888,6 +888,7 @@ GameObject:
   - component: {fileID: 5278523290982486024}
   - component: {fileID: 5278523290982486023}
   - component: {fileID: 5278523290982486022}
+  - component: {fileID: 5278523290982486025}
   m_Layer: 0
   m_Name: CHR_Yoshi_FULL
   m_TagString: Untagged
@@ -919,7 +920,7 @@ MonoBehaviour:
   diveKey: 99
   mask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 5
 --- !u!136 &5278523290982486023
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -950,6 +951,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!95 &5278523290982486025
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5278523290982486021}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: c1bbd238742871c45ae892719ec6b4b8, type: 3}
+  m_Controller: {fileID: 9100000, guid: bc86f608b7dd88f4dbd9a5a016a470c0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &5318293029215025709
 Transform:
   m_ObjectHideFlags: 0
