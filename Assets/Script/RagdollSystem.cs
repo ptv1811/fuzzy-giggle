@@ -30,10 +30,15 @@ public class RagdollSystem : MonoBehaviour
     public bool isRagdoll;
     Vector3 hitVelocity;
     Transform mHip;
+    Transform mHipParent;
     Animator anim;
+    string getUpFromBack, getUpFromBelly;
+
     void Start()
     {
-        //anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
+        //mHip = anim.GetBoneTransform(HumanBodyBones.Hips);
+        //mHipParent = mHip.parent;
         foreach(var trComp in GetComponentsInChildren<Rigidbody>())
         {
             mComp.Add(new MuscleComponent(trComp.transform));
@@ -56,11 +61,17 @@ public class RagdollSystem : MonoBehaviour
                 {
                     comp.rigidbody.AddForce(-hitVelocity, ForceMode.Impulse);
                 }
+                hitVelocity = Vector3.zero;
+                //mHipParent = null;
+                //transform.position = mHip.position;
                 if (isRagdoll)
                     mState = PlayerState.WaitForStable;
                 break;
             case PlayerState.WaitForStable:
+                mHip.parent = mHipParent;
                 SetRagdollPart(true, true);
+                //anim.Play(getUpFromBack, 0, 0);
+                mState = PlayerState.Animated;
                 break;
         }
     }
@@ -75,6 +86,7 @@ public class RagdollSystem : MonoBehaviour
 
     void SetRagdollPart(bool isActive, bool gravity)
     {
+        anim.enabled = isActive;
         foreach(var trComp in mComp)
         {
             trComp.rigidbody.useGravity = gravity;

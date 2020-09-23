@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
     {
         playerRigid = GetComponent<Rigidbody>();
         capsuleCollider = GetComponent<CapsuleCollider>();
-        //anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         Ragdoll = GetComponent<RagdollSystem>();
 
     }
@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
     {
         InputHandle();
         CheckGround();
-        //AnimatorController();
+        AnimatorController();
         //inputH = Input.GetAxisRaw("Horizontal");
         //inputV = Input.GetAxisRaw("Vertical");
     }
@@ -70,6 +70,7 @@ public class Player : MonoBehaviour
         _velocity = Vector3.Lerp(recentMoveVelocity, _velocity, 0.8f);
         recentMoveVelocity = _velocity;
         anim.SetFloat("HorizontalSpeed", _velocity.magnitude);
+        Debug.Log(_velocity.magnitude);
         anim.SetBool("inDive", inDive);
         anim.SetBool("isGrounded", mState == PlayerState.Grounded);
     }
@@ -106,7 +107,7 @@ public class Player : MonoBehaviour
                 mState = PlayerState.Jumping;
                 jumpCounter = 0.2f;
                 inJump = true;
-                //anim.CrossFadeInFixedTime("Jump", 0.01f);
+                anim.CrossFadeInFixedTime("Jump", 0.01f);
 
             }
         }
