@@ -75,8 +75,7 @@ public class Player : MonoBehaviourPun {
         InputHandle ();
         CheckGround ();
         AnimatorController ();
-        //inputH = Input.GetAxisRaw("Horizontal");
-        //inputV = Input.GetAxisRaw("Vertical");
+
     }
     void CameraWork () {
         CameraWork _cameraWork = this.gameObject.GetComponent<CameraWork> ();
@@ -147,7 +146,7 @@ public class Player : MonoBehaviourPun {
                     mState = PlayerState.Falling;
                 }
                 if (inDive) {
-                    //play sound later
+                    //play sound later -
                 }
                 inJump = false;
                 inDive = false;
@@ -201,6 +200,8 @@ public class Player : MonoBehaviourPun {
         Vector3 _direction = Vector3.zero;
         _direction += Vector3.forward * inputV;
         _direction += Vector3.right * inputH;
+        // _direction += transformCam.forward * inputV;
+        // _direction += transformCam.right * inputH;
         if (_direction.magnitude > 1f)
             _direction.Normalize ();
         _direction.y = 0f;

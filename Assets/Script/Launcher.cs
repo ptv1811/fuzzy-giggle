@@ -51,10 +51,7 @@ public class Launcher : MonoBehaviourPunCallbacks {
         Debug.Log ("Number of players:" + PhotonNetwork.LocalPlayer.ActorNumber);
 
         if (Player.LocalPlayerInstance == null) {
-            PhotonNetwork.Instantiate (this.playerModel.name, new Vector3 (-9.09f, 5.21f, 26.59f), Quaternion.identity, 0);
-        } else {
-            // PhotonNetwork.Instantiate (this.playerModel.name, new Vector3 (-9.09f, 5.21f, 26.59f), Quaternion.identity, 0);
-            // PhotonNetwork.Instantiate (this.playerModel.name, SpawnPoints[PhotonNetwork.LocalPlayer.ActorNumber].transform.GetChild (0).position, Quaternion.identity, 0);
+            PhotonNetwork.Instantiate (this.playerModel.name, SpawnPoints[PhotonNetwork.LocalPlayer.ActorNumber].transform.position, Quaternion.identity, 0);
         }
 
     }

@@ -88,7 +88,7 @@ public class CameraWork : MonoBehaviour {
         cameraOffset.z = -distance;
         cameraOffset.y = height;
 
-        cameraTransform.position = Vector3.Lerp (cameraTransform.position, this.transform.position + this.transform.TransformVector (cameraOffset), smoothSpeed * Time.deltaTime);
+        cameraTransform.position = Vector3.Lerp (cameraTransform.position, this.transform.position + this.transform.TransformVector (cameraOffset), smoothSpeed);
 
         cameraTransform.LookAt (this.transform.position + centerOffset);
     }
