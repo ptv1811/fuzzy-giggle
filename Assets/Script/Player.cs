@@ -117,7 +117,7 @@ public class Player : MonoBehaviour
             {
                 diveCounter = 0.2f;
                 inDive = true;
-                //anim.CrossFadeInFixedTime("Dive", 0.01f);
+                anim.CrossFadeInFixedTime("Dive", 0.01f);
                 mState = PlayerState.Diving;
             }
         }
@@ -144,6 +144,7 @@ public class Player : MonoBehaviour
                 inDive = false;
                 break;
             case PlayerState.Falling:
+                Ragdoll.isRagdoll = true;
                 momentum = Vector3.down * gravity;
                 playerRigid.AddForce(momentum);
                 if (isGrounded)

@@ -52,7 +52,7 @@ public class RagdollSystem : MonoBehaviour
         switch (mState)
         {
             case PlayerState.Animated:
-                if (hitVelocity.magnitude > minHitSpeed)
+                if (hitVelocity.magnitude > minHitSpeed && isRagdoll == true)
                     mState = PlayerState.RagdollMode;
                 break;
             case PlayerState.RagdollMode:
@@ -65,7 +65,7 @@ public class RagdollSystem : MonoBehaviour
                 //mHipParent = null;
                 //transform.position = mHip.position;
                 if (isRagdoll)
-                    mState = PlayerState.WaitForStable;
+                   mState = PlayerState.WaitForStable;
                 break;
             case PlayerState.WaitForStable:
                 mHip.parent = mHipParent;
