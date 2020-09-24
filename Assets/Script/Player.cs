@@ -21,7 +21,7 @@ public class Player : MonoBehaviourPun {
     }
 
     public PlayerState mState = PlayerState.Grounded;
-    // public Transform transformCam;
+    Transform transformCam;
 
     [Header ("Movement Speed")]
     public float Speed = 5f;
@@ -83,8 +83,10 @@ public class Player : MonoBehaviourPun {
         if (_cameraWork != null) {
             if (photonView.IsMine) {
                 _cameraWork.OnStartFollowing ();
+                transformCam = Camera.main.transform;
             }
         }
+
     }
     private void AnimatorController () {
         Vector3 _velocity = moveDirection;
@@ -198,10 +200,10 @@ public class Player : MonoBehaviourPun {
 
     Vector3 InputDirection () {
         Vector3 _direction = Vector3.zero;
-        _direction += Vector3.forward * inputV;
-        _direction += Vector3.right * inputH;
-        // _direction += transformCam.forward * inputV;
-        // _direction += transformCam.right * inputH;
+        // _direction += Vector3.forward * inputV;
+        // _direction += Vector3.right * inputH;
+        _direction += transformCam.forward * inputV;
+        _direction += transformCam.right * inputH;
         if (_direction.magnitude > 1f)
             _direction.Normalize ();
         _direction.y = 0f;
