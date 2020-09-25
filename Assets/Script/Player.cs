@@ -56,6 +56,19 @@ public class Player : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "CheckPoint")
+        {
+            checkPoint = other.transform.position;
+        }
+        if (other.gameObject.tag == "Finish")
+        {
+            FindObjectOfType<GameManager>().Qualified();
+            enabled = false;
+        }
+    }
+
     private void Update()
     {
         InputHandle();
@@ -76,7 +89,7 @@ public class Player : MonoBehaviour
         _velocity = Vector3.Lerp(recentMoveVelocity, _velocity, 0.8f);
         recentMoveVelocity = _velocity;
         anim.SetFloat("HorizontalSpeed", _velocity.magnitude);
-        Debug.Log(_velocity.magnitude);
+        //Debug.Log(_velocity.magnitude);
         anim.SetBool("inDive", inDive);
         anim.SetBool("isGrounded", mState == PlayerState.Grounded);
     }
