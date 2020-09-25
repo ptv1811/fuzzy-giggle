@@ -52,8 +52,8 @@ public class RagdollSystem : MonoBehaviour
         switch (mState)
         {
             case PlayerState.Animated:
-                if (hitVelocity.magnitude > minHitSpeed && isRagdoll == true)
-                    mState = PlayerState.RagdollMode;
+                //if (hitVelocity.magnitude > minHitSpeed && isRagdoll == true)
+                    //mState = PlayerState.RagdollMode;
                 break;
             case PlayerState.RagdollMode:
                 SetRagdollPart(false, true);

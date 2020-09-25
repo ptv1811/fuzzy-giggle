@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode diveKey = KeyCode.C;
     public LayerMask mask;
+    public Vector3 checkPoint;
 
 
     #region Private Variables
@@ -64,6 +65,11 @@ public class Player : MonoBehaviour
         //inputV = Input.GetAxisRaw("Vertical");
     }
 
+    private void Awake()
+    {
+        checkPoint = transform.position;
+    }
+
     private void AnimatorController()
     {
         Vector3 _velocity = moveDirection;
@@ -76,6 +82,10 @@ public class Player : MonoBehaviour
     }
     float radius = 0.3f;
 
+    public void LoadCheckPoint()
+    {
+        transform.position = checkPoint;
+    }
 
     private void CheckGround()
     {
