@@ -4,6 +4,10 @@
 /// Camera work. Follow a target
 /// </summary>
 public class CameraWork : MonoBehaviour {
+    GameObject cameraHolder;
+    public float followSpeed = 3; //Speed ​​at which the camera follows us
+    Vector3 followerVelocity;
+    Transform followerTransform;
     #region Private Fields
 
     [Tooltip ("The distance in the local x-z plane to the target")]
@@ -28,7 +32,7 @@ public class CameraWork : MonoBehaviour {
 
     // cached transform of the target
     Transform cameraTransform;
-
+    private Vector3 velocity = Vector3.zero;
     // maintain a flag internally to reconnect if target is lost or camera is switched
     bool isFollowing;
 
@@ -57,6 +61,10 @@ public class CameraWork : MonoBehaviour {
         }
 
         // only follow is explicitly declared
+
+    }
+
+    private void FixedUpdate () {
         if (isFollowing) {
             Follow ();
         }
@@ -75,6 +83,8 @@ public class CameraWork : MonoBehaviour {
         isFollowing = true;
         // we don't smooth anything, we go straight to the right camera shot
         Cut ();
+        followerTransform = GameObject.CreatePrimitive (PrimitiveType.Cube).transform;
+        cameraHolder = GameObject.FindWithTag ("CameraHolder");
     }
 
     #endregion
@@ -88,9 +98,10 @@ public class CameraWork : MonoBehaviour {
         cameraOffset.z = -distance;
         cameraOffset.y = height;
 
-        cameraTransform.position = Vector3.Lerp (cameraTransform.position, this.transform.position + this.transform.TransformVector (cameraOffset), smoothSpeed);
-
-        cameraTransform.LookAt (this.transform.position + centerOffset);
+        // cameraHolder.transform.position = Vector3.SmoothDamp (cameraHolder.transform.position, this.transform.position + centerOffset, ref velocity, 0.1f);
+        cameraHolder.transform.position = this.transform.position + centerOffset;
+        cameraTransform.position = Vector3.Lerp (cameraTransform.position, this.transform.position, Time.deltaTime * followSpeed);
+        cameraTransform.LookAt (this.transform.position);
     }
 
     void Cut () {

@@ -200,8 +200,6 @@ public class Player : MonoBehaviourPun {
 
     Vector3 InputDirection () {
         Vector3 _direction = Vector3.zero;
-        // _direction += Vector3.forward * inputV;
-        // _direction += Vector3.right * inputH;
         _direction += transformCam.forward * inputV;
         _direction += transformCam.right * inputH;
         if (_direction.magnitude > 1f)
