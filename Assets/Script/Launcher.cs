@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Launcher : MonoBehaviourPunCallbacks {
 
-    public GameObject playerModel;
+    //public GameObject playerModel;
 
     public GameObject[] SpawnPoints;
     string gameVersion = "1";
@@ -26,12 +26,6 @@ public class Launcher : MonoBehaviourPunCallbacks {
     void Update () {
 
     }
-    void Init () {
-        if (playerModel == null) { } else {
-            // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-            PhotonNetwork.Instantiate (this.playerModel.name, new Vector3 (-9.09f, 5.21f, 26.59f), Quaternion.identity, 0);
-        }
-    }
     public void Connect () {
         if (PhotonNetwork.IsConnected) {
             PhotonNetwork.JoinRandomRoom ();
@@ -50,8 +44,29 @@ public class Launcher : MonoBehaviourPunCallbacks {
         Debug.Log ("Now this client is in a room.");
         Debug.Log ("Number of players:" + PhotonNetwork.LocalPlayer.ActorNumber);
 
+
+
         if (Player.LocalPlayerInstance == null) {
-            PhotonNetwork.Instantiate (this.playerModel.name, SpawnPoints[PhotonNetwork.LocalPlayer.ActorNumber].transform.position, Quaternion.identity, 0);
+            switch (PassMat.index)
+            {
+                case 1:
+                    PhotonNetwork.Instantiate("BLUE", SpawnPoints[PhotonNetwork.LocalPlayer.ActorNumber].transform.position, Quaternion.identity, 0);
+                    break;
+                case 2:
+                    PhotonNetwork.Instantiate("PURPLE", SpawnPoints[PhotonNetwork.LocalPlayer.ActorNumber].transform.position, Quaternion.identity, 0);
+                    break;
+                case 3:
+                    PhotonNetwork.Instantiate("RED", SpawnPoints[PhotonNetwork.LocalPlayer.ActorNumber].transform.position, Quaternion.identity, 0);
+                    break;
+                case 4:
+                    PhotonNetwork.Instantiate("GREEN", SpawnPoints[PhotonNetwork.LocalPlayer.ActorNumber].transform.position, Quaternion.identity, 0);
+                    break;
+                default:
+                    PhotonNetwork.Instantiate("PURPLE", SpawnPoints[PhotonNetwork.LocalPlayer.ActorNumber].transform.position, Quaternion.identity, 0);
+                    break;
+            }
+
+            
         }
 
     }

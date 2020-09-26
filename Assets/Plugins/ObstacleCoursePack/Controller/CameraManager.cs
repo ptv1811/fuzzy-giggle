@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraManager : MonoBehaviour
-{
+public class CameraManager : MonoBehaviour {
 
 	public float followSpeed = 3; //Speed ​​at which the camera follows us
 	public float mouseSpeed = 2; //Speed ​​at which we rotate the camera with the mouse
-								 //public float controllerSpeed = 5; //Speed ​​at which we rotate the camera with the joystick
+	//public float controllerSpeed = 5; //Speed ​​at which we rotate the camera with the joystick
 	public float cameraDist = 3; //Distance to which the camera is located
 
 	public Transform target; //Player the camera follows
@@ -36,7 +35,6 @@ public class CameraManager : MonoBehaviour
 
 	void FollowTarget(float d)
 	{ //Function that makes the camera follow the player
-
 		float speed = d * followSpeed; //Set speed regardless of fps
 		Vector3 targetPosition = Vector3.Lerp(transform.position, target.position, speed); //Bring the camera closer to the player interpolating with the velocity(0.5 half, 1 everything)
 		transform.position = targetPosition; //Update the camera position
@@ -65,7 +63,7 @@ public class CameraManager : MonoBehaviour
 	}
 
 	private void FixedUpdate()
-	{ //Function that correctly rotates the camera based on the joystick / mouse and follows the player (the delta time is sent to be independent of the fps)
+	{//Function that correctly rotates the camera based on the joystick / mouse and follows the player (the delta time is sent to be independent of the fps)
 		float h = Input.GetAxis("Mouse X");
 		float v = Input.GetAxis("Mouse Y");
 
@@ -73,6 +71,7 @@ public class CameraManager : MonoBehaviour
 		//float c_v = Input.GetAxis("RightAxis Y");
 
 		float targetSpeed = mouseSpeed;
+
 		/*if (c_h != 0 || c_v != 0)
 		{ //Overwrites if i use joystick
 			h = c_h;
@@ -88,7 +87,7 @@ public class CameraManager : MonoBehaviour
 	{
 		//Here begins the code that is responsible for bringing the camera closer by detecting wall
 		float dist = cameraDist + 1.0f; // distance to the camera + 1.0 so the camera doesnt jump 1 unit in if it hits someting far out
-		Ray ray = new Ray(camTrans.parent.position, camTrans.position - camTrans.parent.position); // get a ray in space from the target to the camera.
+		Ray ray = new Ray(camTrans.parent.position, camTrans.position - camTrans.parent.position);// get a ray in space from the target to the camera.
 		RaycastHit hit;
 		// read from the taret to the targetPosition;
 		if (Physics.Raycast(ray, out hit, dist))
