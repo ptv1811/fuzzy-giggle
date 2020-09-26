@@ -10,4 +10,7 @@ public class Play : MonoBehaviour
     PassMat.passmat(obj.GetComponent<Renderer>().material);
      SceneManager.LoadScene(1);
       }
+   public void Git(){
+      Application.OpenURL("https://github.com/ptv1811/fuzzy-giggle");
+   }
 }
