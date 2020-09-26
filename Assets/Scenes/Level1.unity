@@ -26819,6 +26819,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CHR_Yoshi_FULL
       objectReference: {fileID: 0}
+    - target: {fileID: 5521352795705758744, guid: 6eb4946da75961b45b18e2cc652f8432,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6eb4946da75961b45b18e2cc652f8432, type: 3}
 --- !u!4 &5521352796194412508 stripped
