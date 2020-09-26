@@ -16022,7 +16022,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaed6b703ab2368439338136271c8ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerModel: {fileID: 0}
   SpawnPoints:
   - {fileID: 2043824604}
   - {fileID: 1851663103}
@@ -26822,6 +26821,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6eb4946da75961b45b18e2cc652f8432, type: 3}
+--- !u!4 &5521352796194412508 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5521352795690157237, guid: 6eb4946da75961b45b18e2cc652f8432,
+    type: 3}
+  m_PrefabInstance: {fileID: 5521352796194412507}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5799395442361190028
 GameObject:
   m_ObjectHideFlags: 0
@@ -26945,7 +26950,7 @@ MonoBehaviour:
   followSpeed: 100
   mouseSpeed: 3
   cameraDist: 10
-  target: {fileID: 1774977252744861046, guid: 3a4e0967f50c86f4c95de41059c46884, type: 3}
+  target: {fileID: 5521352796194412508}
   pivot: {fileID: 0}
   camTrans: {fileID: 0}
   minAngle: -5
