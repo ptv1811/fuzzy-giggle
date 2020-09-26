@@ -8,6 +8,7 @@ public class SetMat : MonoBehaviour
     void Start()
     {
         GetComponent<Renderer>().material = PassMat.material;
+        Debug.Log(PassMat.index);
     }
 
    
