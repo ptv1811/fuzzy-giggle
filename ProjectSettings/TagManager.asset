@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - CheckPoint
+  - Wall
+  - CameraHolder
   layers:
   - Default
   - TransparentFX
