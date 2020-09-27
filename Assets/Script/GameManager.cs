@@ -43,15 +43,13 @@ public class GameManager : MonoBehaviourPunCallbacks {
         if (numberOfPlayers == 0 && IsStarted == true) {
             if (PhotonNetwork.IsMasterClient) {
                 canAdvanced = true;
+                IsStarted = false;
                 switch (this.currentStage) {
                     case STAGE.stage1:
                         currentStage = STAGE.stage2;
-                        // PhotonNetwork.LoadLevel (2);
-                        IsStarted = false;
                         break;
                     case STAGE.stage2:
                         currentStage = STAGE.stage3;
-                        // PhotonNetwork.LoadLevel (2);
                         break;
 
                 }
@@ -63,7 +61,7 @@ public class GameManager : MonoBehaviourPunCallbacks {
     public int NumberOfPlayersForEachStage (STAGE stage) {
         switch (stage) {
             case STAGE.stage1:
-                return 1;
+                return 2;
                 break;
             case STAGE.stage2:
                 return 1;
