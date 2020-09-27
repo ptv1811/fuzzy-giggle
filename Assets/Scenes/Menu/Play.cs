@@ -14,7 +14,7 @@ int num  = rnd.Next(1, 100);
        num = 2;
     }
     else num =1;
-     SceneManager.LoadScene(num);
+     SceneManager.LoadScene(1);
       }
    public void Git(){
       Application.OpenURL("https://github.com/ptv1811/fuzzy-giggle");
