@@ -19,7 +19,6 @@ public class Launcher : MonoBehaviourPunCallbacks {
     // Start is called before the first frame update
     void Start () {
         Connect ();
-        // Init ();
     }
 
     // Update is called once per frame
@@ -48,11 +47,11 @@ public class Launcher : MonoBehaviourPunCallbacks {
         PhotonNetwork.CreateRoom ("game", new RoomOptions ());
     }
 
-    public override void OnPlayerLeftRoom (Photon.Realtime.Player otherPlayer) {
-        if (PhotonNetwork.IsMasterClient) {
-            LoadGame ();
-        }
-    }
+    // public override void OnPlayerLeftRoom (Photon.Realtime.Player otherPlayer) {
+    //     if (PhotonNetwork.IsMasterClient) {
+    //         LoadGame ();
+    //     }
+    // }
 
     private void LoadGame () {
         if (Player.LocalPlayerInstance == null) {
