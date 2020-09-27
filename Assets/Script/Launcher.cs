@@ -13,7 +13,7 @@ public class Launcher : MonoBehaviourPunCallbacks {
 
     private void Awake () {
         // this make sure PhotonNetwork.LoadLevel() on master and all clients in the same room sync their level automatically
-        PhotonNetwork.AutomaticallySyncScene = true;
+        // PhotonNetwork.AutomaticallySyncScene = true;
     }
 
     // Start is called before the first frame update
