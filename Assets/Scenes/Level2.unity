@@ -2452,7 +2452,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a4a9cafee43ebf41a59e59bbfa21f2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
 --- !u!64 &249162633
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3020,6 +3019,108 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 297241289}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &314395423 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8125632388429620749, guid: 74fe7eed3ad8ec84bb8770355f363fda,
+    type: 3}
+  m_PrefabInstance: {fileID: 373007764}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &314395426
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314395423}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e49b7813a2bd34022a91a50402cb8794, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.06
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &329627547 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2926836065366341684, guid: 5900b0952608c9f418837a960bd86bbc,
@@ -3551,12 +3652,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c78eaffd4b5a704daa689d5bc3e3e09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 32
-  horizontal: 1
-  speed: 10
-  offset: 0
-  isForward: 1
-  startPos: {x: 0, y: 0, z: 0}
 --- !u!64 &371589813
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4669,12 +4764,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c78eaffd4b5a704daa689d5bc3e3e09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 32
-  horizontal: 1
-  speed: 18
-  offset: 0
-  isForward: 1
-  startPos: {x: 0, y: 0, z: 0}
 --- !u!64 &479201998
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11614,7 +11703,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a4a9cafee43ebf41a59e59bbfa21f2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
 --- !u!64 &1113348416
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13877,7 +13965,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a4a9cafee43ebf41a59e59bbfa21f2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
 --- !u!64 &1338322160
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18389,12 +18476,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c78eaffd4b5a704daa689d5bc3e3e09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 32
-  horizontal: 1
-  speed: 7
-  offset: 0
-  isForward: 1
-  startPos: {x: 0, y: 0, z: 0}
 --- !u!64 &1944915084
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19178,7 +19259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a4a9cafee43ebf41a59e59bbfa21f2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
 --- !u!64 &1990308993
 MeshCollider:
   m_ObjectHideFlags: 0
