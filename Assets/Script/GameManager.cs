@@ -11,7 +11,7 @@ public enum STAGE {
 }
 
 public class GameManager : MonoBehaviourPunCallbacks {
-    static bool IsStarted = false;
+    public static bool IsStarted = false;
     public static bool canAdvanced = false;
     private STAGE currentStage;
     private STAGE nextStages;

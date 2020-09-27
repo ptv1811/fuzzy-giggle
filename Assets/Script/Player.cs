@@ -99,6 +99,9 @@ public class Player : MonoBehaviourPun {
         if (photonView.IsMine == false && PhotonNetwork.IsConnected == true) {
             return;
         }
+        if (GameManager.IsStarted == false) {
+            return;
+        }
         InputHandle ();
         CheckGround ();
         AnimatorController ();
