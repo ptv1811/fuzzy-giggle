@@ -85,7 +85,6 @@ public class CameraWork : MonoBehaviour {
         Cut ();
         followerTransform = GameObject.CreatePrimitive (PrimitiveType.Cube).transform;
         cameraHolder = GameObject.FindWithTag ("CameraHolder");
-        Debug.Log ("dfgsgsfdgsf");
     }
 
     #endregion
@@ -113,4 +112,5 @@ public class CameraWork : MonoBehaviour {
         cameraTransform.LookAt (this.transform.position + centerOffset);
     }
     #endregion
+
 }

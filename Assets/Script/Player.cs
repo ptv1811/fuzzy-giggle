@@ -53,6 +53,7 @@ public class Player : MonoBehaviourPun {
     Vector3 momentum;
     RagdollSystem Ragdoll;
     Vector3 moveDirection;
+    STAGE myStage;
     #endregion
 
     private void OnTriggerEnter (Collider other) {
@@ -70,6 +71,7 @@ public class Player : MonoBehaviourPun {
         enabled = false;
         GameManager.removePlayer ();
         passed = true;
+        PhotonNetwork.LeaveRoom ();
     }
     public void LoadCheckPoint () {
         transform.position = checkPoint;
@@ -90,6 +92,7 @@ public class Player : MonoBehaviourPun {
         anim = GetComponent<Animator> ();
         Ragdoll = GetComponent<RagdollSystem> ();
         CameraWork ();
+        GameManager.addPlayer ();
     }
 
     private void Update () {
@@ -99,7 +102,6 @@ public class Player : MonoBehaviourPun {
         InputHandle ();
         CheckGround ();
         AnimatorController ();
-
     }
 
     void CameraWork () {
@@ -223,8 +225,6 @@ public class Player : MonoBehaviourPun {
 
     Vector3 InputDirection () {
         Vector3 _direction = Vector3.zero;
-        // _direction += Vector3.forward * inputV;
-        // _direction += Vector3.right * inputH;
         _direction += transformCam.forward * inputV;
         _direction += transformCam.right * inputH;
         if (_direction.magnitude > 1f)
@@ -255,4 +255,11 @@ public class Player : MonoBehaviourPun {
         }
         transform.rotation = Quaternion.Euler (0f, currentYposition, 0f);
     }
+
+    void Eliminated () {
+        if (photonView.IsMine) {
+            this.playerRigid.detectCollisions = false;
+        }
+    }
+
 }
