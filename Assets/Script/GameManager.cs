@@ -13,7 +13,7 @@ public enum STAGE {
 public class GameManager : MonoBehaviourPunCallbacks {
     public static bool IsStarted = false;
     public static bool canAdvanced = false;
-    private STAGE currentStage;
+    private static STAGE currentStage;
     private STAGE nextStages;
     private static int numberOfPlayers = 0;
     public void Qualified () {
@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviourPunCallbacks {
     public static int getNumberOfPlayers () {
         return numberOfPlayers;
     }
+    public static STAGE getCurrentStage () {
+        return currentStage;
+    }
     private void Start () {
         currentStage = STAGE.stage1;
         nextStages = currentStage + 1;
@@ -44,7 +47,7 @@ public class GameManager : MonoBehaviourPunCallbacks {
             if (PhotonNetwork.IsMasterClient) {
                 canAdvanced = true;
                 IsStarted = false;
-                switch (this.currentStage) {
+                switch (currentStage) {
                     case STAGE.stage1:
                         currentStage = STAGE.stage2;
                         break;
@@ -76,7 +79,7 @@ public class GameManager : MonoBehaviourPunCallbacks {
     }
 
     private void StartGame () {
-        if (numberOfPlayers == NumberOfPlayersForEachStage (this.currentStage)) {
+        if (numberOfPlayers == NumberOfPlayersForEachStage (currentStage)) {
             IsStarted = true;
             nextStages = currentStage + 1;
         }

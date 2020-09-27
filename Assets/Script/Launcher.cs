@@ -44,7 +44,20 @@ public class Launcher : MonoBehaviourPunCallbacks {
         LoadGame ();
     }
     public override void OnJoinRandomFailed (short returnCode, string message) {
-        PhotonNetwork.CreateRoom ("game", new RoomOptions ());
+        switch (GameManager.getCurrentStage ()) {
+            case STAGE.stage1:
+                PhotonNetwork.CreateRoom ("1", new RoomOptions ());
+                break;
+            case STAGE.stage2:
+                PhotonNetwork.CreateRoom ("2", new RoomOptions ());
+                break;
+            case STAGE.stage3:
+                PhotonNetwork.CreateRoom ("3", new RoomOptions ());
+                break;
+            default:
+                PhotonNetwork.CreateRoom ("game", new RoomOptions ());
+                break;
+        }
     }
 
     // public override void OnPlayerLeftRoom (Photon.Realtime.Player otherPlayer) {
