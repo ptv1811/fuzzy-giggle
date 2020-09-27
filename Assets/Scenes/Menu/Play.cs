@@ -27,4 +27,7 @@ public class Play : MonoBehaviour
    public void PlayPopUp(){
       FindObjectOfType<AudioScript>().PlaySound("PopUp");
    }
+   public void QuitGame(){
+Application.Quit();
+   }
 }
