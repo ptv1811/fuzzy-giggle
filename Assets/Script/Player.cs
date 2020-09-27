@@ -37,6 +37,9 @@ public class Player : MonoBehaviourPun {
     public LayerMask mask;
     public Vector3 checkPoint;
 
+    private float pushForce;
+    private Vector3 pushDir;
+
     #region Private Variables
     private Rigidbody playerRigid;
     float inputH, inputV;
@@ -64,6 +67,15 @@ public class Player : MonoBehaviourPun {
                 ImQualified ();
             }
         }
+    }
+
+    public void HitPlayer(Vector3 velocityF, float time)
+    {
+        playerRigid.velocity = velocityF;
+
+        pushForce = velocityF.magnitude;
+        pushDir = Vector3.Normalize(velocityF);
+        //StartCoroutine(Decrease(velocityF.magnitude, time));
     }
 
     private void ImQualified () {
@@ -97,9 +109,6 @@ public class Player : MonoBehaviourPun {
 
     private void Update () {
         if (photonView.IsMine == false && PhotonNetwork.IsConnected == true) {
-            return;
-        }
-        if (GameManager.IsStarted == false) {
             return;
         }
         InputHandle ();
