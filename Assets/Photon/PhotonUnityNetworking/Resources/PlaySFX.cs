@@ -27,6 +27,12 @@ public class PlaySFX : MonoBehaviour
     public void Run(){
         PlaySound("Running");
     }
+    public void JumpSound(){
+        PlaySound("Jumping");
+    }
+    public void Dive(){
+ PlaySound("Diving");
+    }    
     public void StopSound(string name)
     {
 

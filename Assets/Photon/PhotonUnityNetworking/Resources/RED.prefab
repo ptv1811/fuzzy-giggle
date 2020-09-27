@@ -1241,10 +1241,15 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     audioSrc: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
+  - name: Diving
+    clip: {fileID: 8300000, guid: ba5e8b582820b415dbe04fe4402aa459, type: 3}
+    volume: 1
+    pitch: 1
+    audioSrc: {fileID: 0}
+  - name: Jumping
+    clip: {fileID: 8300000, guid: b932c9c2842754f73bf04ef6f97b6eea, type: 3}
+    volume: 1
+    pitch: 1
     audioSrc: {fileID: 0}
 --- !u!1 &5521352795705758746
 GameObject:
