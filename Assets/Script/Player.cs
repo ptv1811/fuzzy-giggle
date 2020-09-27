@@ -54,6 +54,9 @@ public class Player : MonoBehaviourPun
     Vector3 momentum;
     RagdollSystem Ragdoll;
     Vector3 moveDirection;
+
+    private float pushForce;
+    private Vector3 pushDir;
     #endregion
 
     private void OnTriggerEnter(Collider other)
@@ -66,6 +69,16 @@ public class Player : MonoBehaviourPun
             enabled = false;
         }
     }
+
+    public void HitPlayer(Vector3 velocityF, float time)
+    {
+        playerRigid.velocity = velocityF;
+
+        pushForce = velocityF.magnitude;
+        pushDir = Vector3.Normalize(velocityF);
+        //StartCoroutine(Decrease(velocityF.magnitude, time));
+    }
+
 
     public void LoadCheckPoint()
     {
