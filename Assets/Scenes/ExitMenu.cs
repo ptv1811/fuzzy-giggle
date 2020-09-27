@@ -18,6 +18,7 @@ public class ExitMenu : MonoBehaviour
     {
      if(Input.GetKeyDown(KeyCode.Escape))  
      {
+         FindObjectOfType<AudioScript>().PlaySound("PopUp");
             obj.SetActive(true);
      } 
     }
@@ -25,4 +26,14 @@ public class ExitMenu : MonoBehaviour
         PhotonNetwork.Disconnect();
         SceneManager.LoadScene(0);
     }
+    public void PlayCancel(){
+    
+       FindObjectOfType<AudioScript>().PlaySound("Cancel");
+   }
+   public void PlayAccept(){
+  FindObjectOfType<AudioScript>().PlaySound("Accept");
+   }
+   public void PlayPopUp(){
+      FindObjectOfType<AudioScript>().PlaySound("PopUp");
+   }
 }
