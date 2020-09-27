@@ -10,7 +10,7 @@ public enum STAGE {
     stage3
 }
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviourPunCallbacks {
     static bool IsStarted = false;
     public static bool canAdvanced = false;
     private STAGE currentStage;
@@ -82,15 +82,19 @@ public class GameManager : MonoBehaviour {
             IsStarted = true;
             nextStages = currentStage + 1;
         }
-    }
 
-    void OnLeftRoom () {
+    }
+    public override void OnLeftRoom () {
         switch (currentStage) {
             case STAGE.stage2:
-                SceneManager.LoadScene (2);
+                Debug.Log ("test 1");
+                PhotonNetwork.LoadLevel (2);
+                // SceneManager.LoadScene (2);
                 break;
             default:
-                SceneManager.LoadScene (2);
+                Debug.Log ("test 2");
+                PhotonNetwork.LoadLevel (2);
+                // SceneManager.LoadScene (2);
                 break;
         }
     }

@@ -56,8 +56,8 @@ public class Launcher : MonoBehaviourPunCallbacks {
 
     private void LoadGame () {
         if (Player.LocalPlayerInstance == null) {
-            // GameObject spawns = SpawnPoints[PhotonNetwork.LocalPlayer.ActorNumber].transform.position;
-            Vector3 spawns = new Vector3 (-18.7f, 124.45f, 327.01f);
+            Vector3 spawns = SpawnPoints[PhotonNetwork.LocalPlayer.ActorNumber].transform.position;
+            // Vector3 spawns = new Vector3 (-18.7f, 124.45f, 327.01f);
             switch (PassMat.index) {
                 case 1:
                     PhotonNetwork.Instantiate ("BLUE", spawns, Quaternion.identity, 0);
