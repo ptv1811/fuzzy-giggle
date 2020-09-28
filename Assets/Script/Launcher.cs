@@ -13,13 +13,12 @@ public class Launcher : MonoBehaviourPunCallbacks {
 
     private void Awake () {
         // this make sure PhotonNetwork.LoadLevel() on master and all clients in the same room sync their level automatically
-        PhotonNetwork.AutomaticallySyncScene = true;
+        // PhotonNetwork.AutomaticallySyncScene = true;
     }
 
     // Start is called before the first frame update
     void Start () {
         Connect ();
-        // Init ();
     }
 
     // Update is called once per frame
@@ -36,41 +35,59 @@ public class Launcher : MonoBehaviourPunCallbacks {
     }
 
     public override void OnConnectedToMaster () {
-        // PhotonNetwork.JoinOrCreateRoom ("Test", new RoomOptions { IsOpen = true, MaxPlayers = 4 }, TypedLobby.Default);
         PhotonNetwork.JoinRandomRoom ();
     }
 
     public override void OnJoinedRoom () {
         Debug.Log ("Now this client is in a room.");
         Debug.Log ("Number of players:" + PhotonNetwork.LocalPlayer.ActorNumber);
+        LoadGame ();
+    }
+    public override void OnJoinRandomFailed (short returnCode, string message) {
+        switch (GameManager.getCurrentStage ()) {
+            case STAGE.stage1:
+                PhotonNetwork.CreateRoom ("1", new RoomOptions ());
+                break;
+            case STAGE.stage2:
+                PhotonNetwork.CreateRoom ("2", new RoomOptions ());
+                break;
+            case STAGE.stage3:
+                PhotonNetwork.CreateRoom ("3", new RoomOptions ());
+                break;
+            default:
+                PhotonNetwork.CreateRoom ("game", new RoomOptions ());
+                break;
+        }
+    }
 
+    // public override void OnPlayerLeftRoom (Photon.Realtime.Player otherPlayer) {
+    //     if (PhotonNetwork.IsMasterClient) {
+    //         LoadGame ();
+    //     }
+    // }
 
-
+    private void LoadGame () {
         if (Player.LocalPlayerInstance == null) {
-            switch (PassMat.index)
-            {
+            Vector3 spawns = SpawnPoints[PhotonNetwork.LocalPlayer.ActorNumber].transform.position;
+            // Vector3 spawns = new Vector3 (-18.7f, 124.45f, 327.01f);
+            switch (PassMat.index) {
                 case 1:
-                    PhotonNetwork.Instantiate("BLUE", SpawnPoints[PhotonNetwork.LocalPlayer.ActorNumber].transform.position, Quaternion.identity, 0);
+                    PhotonNetwork.Instantiate ("BLUE", spawns, Quaternion.identity, 0);
                     break;
                 case 2:
-                    PhotonNetwork.Instantiate("PURPLE", SpawnPoints[PhotonNetwork.LocalPlayer.ActorNumber].transform.position, Quaternion.identity, 0);
+                    PhotonNetwork.Instantiate ("PURPLE", spawns, Quaternion.identity, 0);
                     break;
                 case 3:
-                    PhotonNetwork.Instantiate("RED", SpawnPoints[PhotonNetwork.LocalPlayer.ActorNumber].transform.position, Quaternion.identity, 0);
+                    PhotonNetwork.Instantiate ("RED", spawns, Quaternion.identity, 0);
                     break;
                 case 4:
-                    PhotonNetwork.Instantiate("GREEN", SpawnPoints[PhotonNetwork.LocalPlayer.ActorNumber].transform.position, Quaternion.identity, 0);
+                    PhotonNetwork.Instantiate ("GREEN", spawns, Quaternion.identity, 0);
                     break;
                 default:
-                    PhotonNetwork.Instantiate("PURPLE", SpawnPoints[PhotonNetwork.LocalPlayer.ActorNumber].transform.position, Quaternion.identity, 0);
+                    PhotonNetwork.Instantiate ("PURPLE", spawns, Quaternion.identity, 0);
                     break;
             }
 
-            
         }
-
-    }
-    public override void OnJoinRandomFailed (short returnCode, string message) {
-        PhotonNetwork.CreateRoom ("game", new RoomOptions ());
     }
 }
